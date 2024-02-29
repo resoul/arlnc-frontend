@@ -2,7 +2,7 @@ import './assets/css/app.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import Breakpoint from "@/components/breakpoint.js"
+import Breakpoint from "@/extensions/breakpoint.js"
 import App from './Application.vue'
 import router from './router'
 

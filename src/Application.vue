@@ -1,8 +1,8 @@
 <script>
-import Drawer from "@/components/drawer/Drawer.vue";
-import Header from "@/components/header/Header.vue";
-import Sidebar from "@/components/sidebar/Sidebar.vue";
-import { useThemeStore } from "@/components/theme.js";
+import Drawer from "@/views/layout/drawer/Drawer.vue";
+import Header from "@/views/layout/header/Header.vue";
+import Sidebar from "@/views/layout/sidebar/Sidebar.vue";
+import { useThemeStore } from "@/stores/theme.js";
 export default {
   name: "Application",
   components: {
@@ -13,6 +13,16 @@ export default {
   setup() {
     const theme = useThemeStore()
     return { theme }
+  },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    init() {
+      const theme = useThemeStore()
+      theme.isMonochromeMode && theme.addMonochromeMode()
+      theme.isDarkMode ? theme.setDarkMode() : theme.setLightMode()
+    }
   }
 }
 </script>
