@@ -1,32 +1,17 @@
 <script>
-import Popper from "@/extensions/popper.js";
 import Tab from "@/extensions/tab.js";
+import Directives from "@/extensions/Directives.vue";
 export default {
-  name: "Notification",
+  extends: Directives,
   mounted() {
-    new Popper('#notification-wrapper', '#notification-ref', '#notification-box', {
-      placement: "bottom-end",
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset: [0, 12],
-          },
-        },
-      ],
-    });
-
     new Tab('.notification-tab-wrapper')
   }
 }
 </script>
 
 <template>
-  <div id="notification-wrapper" class="flex">
-    <button
-        id="notification-ref"
-        class="btn relative size-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-    >
+  <div v-popper="{ ref: '#notification-ref', offset: [0, 12] }" class="flex">
+    <button id="notification-ref" class="btn relative size-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
       <svg
           xmlns="http://www.w3.org/2000/svg"
           class="size-5 text-slate-500 dark:text-navy-100"
@@ -42,9 +27,7 @@ export default {
         />
       </svg>
 
-      <span
-          class="absolute -top-px -right-px flex size-3 items-center justify-center"
-      >
+      <span class="absolute -top-px -right-px flex size-3 items-center justify-center">
                     <span
                         class="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-80"
                     ></span>
@@ -53,14 +36,12 @@ export default {
                     ></span>
                   </span>
     </button>
-    <div id="notification-box" class="popper-root">
+    <div class="popper-root">
       <div class="notification-tab-wrapper popper-box mx-4 mt-1 flex max-h-[calc(100vh-6rem)] w-[calc(100vw-2rem)] flex-col rounded-lg border border-slate-150 bg-white shadow-soft dark:border-navy-800 dark:bg-navy-700 dark:shadow-soft-dark sm:m-0 sm:w-80">
         <div class="rounded-t-lg bg-slate-100 text-slate-600 dark:bg-navy-800 dark:text-navy-200">
           <div class="flex items-center justify-between px-4 pt-2">
             <div class="flex items-center space-x-2">
-              <h3
-                  class="font-medium text-slate-700 dark:text-navy-100"
-              >
+              <h3 class="font-medium text-slate-700 dark:text-navy-100">
                 Notifications
               </h3>
               <div

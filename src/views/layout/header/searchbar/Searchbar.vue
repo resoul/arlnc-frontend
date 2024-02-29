@@ -3,10 +3,10 @@ import Content from "@/views/layout/header/searchbar/Content.vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
 import ArrowLeftIcon from "@/components/icons/ArrowLeftIcon.vue";
 import SearchSmallIcon from "@/components/icons/SearchSmallIcon.vue";
-import Popper from "@/extensions/popper.js";
 import Tab from "@/extensions/tab.js";
+import Directives from "@/extensions/Directives.vue";
 export default {
-  name: "Searchbar",
+  extends: Directives,
   components: {
     'ui-content': Content,
     'ui-search-icon': SearchIcon,
@@ -117,25 +117,12 @@ export default {
     }
   },
   mounted() {
-    new Popper(
-        '#searchbar-wrapper',
-        '#searchbar-ref',
-        '#searchbar-box',
-        {
-          placement: "bottom-end",
-          modifiers: [
-            {
-              name: "offset",
-              options: {
-                offset: [0, 12],
-              },
-            },
-          ],
-        },
-        "focus",
-        (isActive) => { this.isFocusInput = isActive }
-    )
     new Tab(".mobile-search-tab-wrapper");
+  },
+  methods: {
+    onToggle(isActive) {
+      this.isFocusInput = isActive
+    }
   }
 }
 </script>
@@ -144,7 +131,7 @@ export default {
   <button @click="isShowMobile = true" class="mobile-searchbar-show btn size-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:hidden">
     <ui-search-icon />
   </button>
-  <div id="searchbar-wrapper" class="hidden sm:flex">
+  <div v-popper="{ ref: '#searchbar-ref', event: 'focus', offset: [0, 12], onToggle: (isActive) => { isFocusInput = isActive} }" class="hidden sm:flex">
     <div class="relative mr-4 flex h-8">
       <input id="searchbar-ref" :class="isFocusInput ? 'w-80' : 'w-60'" placeholder="Search here..." class="form-input peer h-full w-60 rounded-full bg-slate-150 px-4 pl-9 text-xs+ text-slate-800 ring-primary/50 hover:bg-slate-200 focus:ring dark:bg-navy-900/90 dark:text-navy-100 dark:placeholder-navy-300 dark:ring-accent/50 dark:hover:bg-navy-900 dark:focus:bg-navy-900" type="text" />
       <div class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">

@@ -13,8 +13,8 @@ export default class Popper {
       this.wrapperEl = wrapper;
     }
 
-    this.ref = this.wrapperEl.querySelector(ref);
-    this.box = this.wrapperEl.querySelector(box);
+    this.ref = ref;
+    this.box = box;
 
     this.onToggle = onToggle;
     this.wrapperEl._popper = this
