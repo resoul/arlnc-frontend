@@ -23,12 +23,12 @@ export default {
         {
           name: 'Dashboards',
           icon: 'ui-home-icon',
-          route: '/dashboards/crm-analytics'
+          route: '/pages/crm-analytics'
         },
         {
           name: 'Applications',
           icon: 'ui-app-icon',
-          route: '/app/list'
+          route: '/apps/list'
         },
         {
           name: 'Pages & Layouts',
@@ -38,17 +38,17 @@ export default {
         {
           name: 'Forms',
           icon: 'ui-forms-icon',
-          route: '/forms/input-text'
+          route: '/pages/input-text'
         },
         {
           name: 'Components',
           icon: 'ui-component-icon',
-          route: '/components/accordion'
+          route: '/pages/accordion'
         },
         {
           name: 'Elements',
           icon: 'ui-element-icon',
-          route: '/elements/avatar'
+          route: '/pages/avatar'
         }
       ]
     }

@@ -3,13 +3,11 @@ import Logo from "@/views/layout/sidebar/elements/Logo.vue";
 import NavLink from "@/views/layout/sidebar/elements/NavLink.vue";
 import SettingsIcon from "@/components/icons/sidebar/SettingsIcon.vue";
 import Profile from "@/views/layout/sidebar/elements/Profile.vue";
-import SidebarPanel from "@/views/layout/sidebar/SidebarPanel.vue";
 export default {
   name: "Sidebar",
   components: {
     'ui-logo': Logo,
     'ui-profile': Profile,
-    'ui-sidebar-panel': SidebarPanel,
     'ui-settings-icon': SettingsIcon,
     'ui-nav-link': NavLink
   }
@@ -30,6 +28,7 @@ export default {
         </div>
       </div>
     </div>
-    <ui-sidebar-panel class="sidebar-panel" />
+    <div class="sidebar-panel"></div>
+    <div class="sidebar-panel-min"></div>
   </div>
 </template>
