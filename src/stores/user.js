@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 import { useStorage } from "@vueuse/core";
 
 export const useUserStore = defineStore({
@@ -62,5 +63,9 @@ export const useUserStore = defineStore({
             return true;
         }
     },
-    actions: {}
+    actions: {
+        async fetchProfile() {
+            const { data } = await axios.post(import.meta.env.VITE_BASE_URL)
+        }
+    }
 })
